@@ -1,6 +1,7 @@
 import logging
 from functools import lru_cache
 
+from dotenv import load_dotenv
 from pydantic import BaseSettings, Field
 
 
@@ -17,4 +18,5 @@ class ApplicationSettings(BaseSettings):
 
 @lru_cache()
 def get_settings() -> ApplicationSettings:
+    load_dotenv()
     return ApplicationSettings()

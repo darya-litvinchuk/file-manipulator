@@ -2,7 +2,7 @@ import argparse
 from pathlib import Path
 
 from manipulator import logger
-from manipulator.file_utils import FileManipulator
+from manipulator.file_processor import FileManipulator
 
 
 def main(args):
@@ -34,7 +34,7 @@ class IsValidDirAction(argparse.Action):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         prog="File manipulator",
-        usage="manipulator ",
+        usage="manipulator",
         description="An util for file manipulation.",
         formatter_class=MultilineFormatter,
     )

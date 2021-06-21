@@ -4,7 +4,7 @@ import shutil
 from collections import defaultdict
 from functools import partial
 from pathlib import Path
-from typing import Dict, List
+from typing import List
 
 from manipulator import get_settings, logger
 
@@ -55,7 +55,7 @@ class FileManipulator:
         minute_group = (int(minutes) // group_interval) * group_interval
         return first, minute_group
 
-    def group_files(self, files: List[Path]) -> Dict[str, List[Path]]:
+    def group_files(self, files: List[Path]):
         files_groups = defaultdict(list)
 
         for file in files:
@@ -88,14 +88,18 @@ class FileManipulator:
                 content += fp.read()
         return content
 
-    def concatenate_content(self, files_groups: Dict[str, List[Path]]):
+    @staticmethod
+    def _write_content_to_file(filename, content):
+        with open(filename, "w") as fp:
+            fp.write(content)
+
+    def concatenate_content(self, files_groups) -> List[Path]:
         final_files = []
         for group in files_groups:
             final_file = self._group_final_filepath(group)
             content = self._group_content(files_groups[group])
 
-            with open(final_file, "w") as fp:
-                fp.write(content)
+            self._write_content_to_file(final_file, content)
 
             final_files.append(final_file)
         return final_files

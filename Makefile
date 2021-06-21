@@ -2,7 +2,7 @@
 -include .env
 -include Makefile.local
 
-PROJECT_DIRECTORY='src/'
+PROJECT_DIRECTORY='.'
 
 
 .PHONY: format
@@ -47,13 +47,13 @@ licenses-check:
 .PHONY: tests
 tests:
 	@#@ Run tests
-	pytest --no-cov || true
+	pytest --no-cov -v
 
 
 .PHONY: tests-coverage
 tests-coverage:
 	@#@ Test coverage report
-	pytest --cov-report term-missing:skip-covered || true
+	pytest --cov-report term-missing:skip-covered
 
 
 .PHONY: mutmut-check

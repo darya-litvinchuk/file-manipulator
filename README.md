@@ -19,10 +19,17 @@ For example: 2021_04_06_19_29_59_30_3_0_995678_1_12_0.300rec
 8. Cover all functions with unit tests.
 
 
+#### Usage example     
+```bash
+python -m manipulator -i ./input_dir/ -o30 ./output_30r -o300 ./output_300r
+```
+
+
 #### TODO:
 1. Add setup.py
 2. Read each file in the separate tread
-3. Add docstrings to all public methods
+3. Add test to process()
+4. Add checks to the Action about filename (must be in `YYYY_mm_DD_HH_MM_SS_*` format)
 
 
 #### Requirements
@@ -40,6 +47,7 @@ Also you can read a very nice [guide about commit messages](https://m.habr.com/r
 
 1. Lock poetry dependencies:
     - Activate virtual env
+    - Install poetry: `pip install poetry`
     - Change `pyproject.toml` file
     - Generate `poetry.lock` file: `poetry lock --no-update`
     - Install dependencies: `poetry install`

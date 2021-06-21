@@ -35,7 +35,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         prog="File manipulator",
         usage="manipulator",
-        description="An util for file manipulation.",
+        description="Util for file manipulation.",
         formatter_class=MultilineFormatter,
     )
 
